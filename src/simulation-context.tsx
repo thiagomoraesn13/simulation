@@ -2,6 +2,8 @@ import { createContext, useContext } from "react";
 
 export type SimulationConfig = {
   goToOnboarding: () => void;
+  theme: "noverde" | "dotz";
+  assetsBaseUrl: string; // "/assets/design-tokens"
 };
 
 const SimulationContext = createContext<SimulationConfig | null>(null);
