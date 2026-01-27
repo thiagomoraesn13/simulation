@@ -14,7 +14,8 @@
   "scripts": {
     "build": "vite build && yarn build:types",
     "build:types": "tsc -p tsconfig.build.json",
-    "publish:pkg": "yarn build && npm publish"
+    "prepublishOnly": "yarn build",
+    "publish:pkg": "npm publish"
   },
   "peerDependencies": {
     "react": ">=18",
