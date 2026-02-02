@@ -3,7 +3,7 @@ import { useSimulation } from "../simulation-context";
 
 export function Page1() {
   const { goToOnboarding, assetsBaseUrl, theme } = useSimulation();
-  const logoUrl = `${assetsBaseUrl}/themes/${theme}/assets/logo.png`;
+  const logoUrl = `${assetsBaseUrl}/${theme}/logo.png`;
 
   return (
     <div className="p-6 space-y-4">
