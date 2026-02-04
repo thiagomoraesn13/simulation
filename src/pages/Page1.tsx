@@ -11,14 +11,25 @@ export function Page1() {
 
       <img src={logoUrl} alt="logo nao veio" />
 
-      <GenericButton
-        variant="primary"
-        width="full"
-        type="button"
-        onClick={() => goToOnboarding()}
-      >
-        Ir para onboarding
-      </GenericButton>
+      <div className="flex gap-4">
+        <GenericButton
+          variant="primary"
+          width="full"
+          type="button"
+          onClick={() => goToOnboarding()}
+        >
+          Ir para onboarding
+        </GenericButton>
+
+        <GenericButton
+          variant="secondary"
+          width="full"
+          type="button"
+          onClick={() => goToOnboarding()}
+        >
+          Ir para onboarding
+        </GenericButton>
+      </div>
     </div>
   );
 }

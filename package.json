@@ -11,9 +11,17 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
   "scripts": {
-    "build": "vite build && yarn build:types",
+    "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
     "build:types": "tsc -p tsconfig.build.json",
+    "build": "vite build && yarn build:css && yarn build:types",
     "prepublishOnly": "yarn build",
     "publish:pkg": "npm publish"
   },
@@ -26,6 +34,7 @@
     "@thiagomoraesn13/ui": "^0.0.5"
   },
   "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18",
     "@types/node": "^25.0.10",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
@@ -33,6 +42,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.12.0",
+    "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
     "vite": "^7.3.1"
   }

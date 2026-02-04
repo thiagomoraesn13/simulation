@@ -10,21 +10,15 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: path.resolve(__dirname, "src/index.ts"),
-      name: "Onboarding",
+      entry: "src/index.ts",
+      name: "Simulation",
       formats: ["es", "umd"],
       fileName: (format) => (format === "es" ? "index.js" : "index.umd.cjs"),
     },
     sourcemap: true,
     emptyOutDir: true,
     rollupOptions: {
-      external: [
-        "react",
-        "react-dom",
-        "react-router-dom",
-        "react/jsx-runtime",
-        "@thiagomoraesn13/ui",
-      ],
+      external: ["react", "react-dom", "react/jsx-runtime"],
       output: {
         globals: {
           react: "React",
