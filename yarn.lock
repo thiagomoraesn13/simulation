@@ -685,6 +685,11 @@
     "@tailwindcss/oxide-win32-arm64-msvc" "4.1.18"
     "@tailwindcss/oxide-win32-x64-msvc" "4.1.18"
 
+"@thiagomoraesn13/design-tokens@^0.0.37":
+  version "0.0.37"
+  resolved "https://npm.pkg.github.com/download/@thiagomoraesn13/design-tokens/0.0.37/d9c9bf667b97a74165c79047ba8947aa065e8f7d#d9c9bf667b97a74165c79047ba8947aa065e8f7d"
+  integrity sha512-i4WYvcjMvYjpaSYqoBHkkaD6BQ1kNAyCpDrAHWRY9H07YzvP9oT3mWVOy/LSPLIEpuna+xw/hjSGoxQy98fslw==
+
 "@thiagomoraesn13/ui@^0.0.5":
   version "0.0.5"
   resolved "https://npm.pkg.github.com/download/@thiagomoraesn13/ui/0.0.5/0595f80082b0431fea1b7e1dd9f522671fccafa6#0595f80082b0431fea1b7e1dd9f522671fccafa6"
