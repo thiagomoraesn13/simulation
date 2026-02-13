@@ -31,7 +31,7 @@
     "react-router-dom": ">=6 <8"
   },
   "dependencies": {
-    "@thiagomoraesn13/design-tokens": "0.0.40",
+    "@thiagomoraesn13/design-tokens": "0.0.41",
     "@thiagomoraesn13/ui": "^0.0.5",
     "clsx": "^2.1.1"
   },
