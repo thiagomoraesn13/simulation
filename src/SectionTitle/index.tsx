@@ -1,4 +1,4 @@
-import { typography } from "@thiagomoraesn13/design-tokens";
+import { textColor, typography } from "@thiagomoraesn13/design-tokens";
 
 import { clsx, ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
@@ -21,8 +21,6 @@ export const SectionTitle = ({
   <>
     <h1 className={cn(typography("display"), "font-bold")}>{title}</h1>
 
-    <h1 className="typography-body">body</h1>
-
-    <h1 className="typography-mini">mini</h1>
+    <p className={cn(typography("display"), textColor("brand"))}>{subtitle}</p>
   </>
 );
