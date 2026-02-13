@@ -12,14 +12,10 @@ export const SectionTitle = ({
   dataTestId,
 }: SectionTitleProps) => (
   <>
-    <h1
-      className={`${typography.size("h1-mobile")} ${typography.size("h1", "lg")}
-        ${textColor("brand")}
-        font-bold`}
-      data-testid={dataTestId}
-    >
-      {title}
-    </h1>
-    <p className="text-body">{subtitle}</p>
+    <h1 className="typography-display font-bold">display</h1>
+
+    <h1 className="typography-body">body</h1>
+
+    <h1 className="typography-mini">mini</h1>
   </>
 );
