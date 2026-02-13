@@ -685,10 +685,10 @@
     "@tailwindcss/oxide-win32-arm64-msvc" "4.1.18"
     "@tailwindcss/oxide-win32-x64-msvc" "4.1.18"
 
-"@thiagomoraesn13/design-tokens@^0.0.37":
-  version "0.0.37"
-  resolved "https://npm.pkg.github.com/download/@thiagomoraesn13/design-tokens/0.0.37/d9c9bf667b97a74165c79047ba8947aa065e8f7d#d9c9bf667b97a74165c79047ba8947aa065e8f7d"
-  integrity sha512-i4WYvcjMvYjpaSYqoBHkkaD6BQ1kNAyCpDrAHWRY9H07YzvP9oT3mWVOy/LSPLIEpuna+xw/hjSGoxQy98fslw==
+"@thiagomoraesn13/design-tokens@0.0.40":
+  version "0.0.40"
+  resolved "https://npm.pkg.github.com/download/@thiagomoraesn13/design-tokens/0.0.40/3eb786282b5d26c9921a5b7c27546b185164c77d#3eb786282b5d26c9921a5b7c27546b185164c77d"
+  integrity sha512-hrM44sOWq8KZBsSl/48Uoeyq+v2vGLO0W8J4CksAfcgzwDsqd2iMJRuLvy1JAvEl5pybcu8Zjjw+mjhc6KO2pg==
 
 "@thiagomoraesn13/ui@^0.0.5":
   version "0.0.5"
@@ -794,6 +794,11 @@ caniuse-lite@^1.0.30001759:
   version "1.0.30001767"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001767.tgz#0279c498e862efb067938bba0a0aabafe8d0b730"
   integrity sha512-34+zUAMhSH+r+9eKmYG+k2Rpt8XttfE4yXAjoZvkAPs15xcYQhyBYdalJ65BzivAvGRMViEjy6oKr/S91loekQ==
+
+clsx@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
+  integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
 
 convert-source-map@^2.0.0:
   version "2.0.0"

@@ -1,4 +1,11 @@
-import { typography, textColor } from "@thiagomoraesn13/design-tokens";
+import { typography } from "@thiagomoraesn13/design-tokens";
+
+import { clsx, ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
 
 interface SectionTitleProps {
   title: string;
@@ -12,7 +19,7 @@ export const SectionTitle = ({
   dataTestId,
 }: SectionTitleProps) => (
   <>
-    <h1 className="typography-display font-bold">display</h1>
+    <h1 className={cn(typography("display"), "font-bold")}>{title}</h1>
 
     <h1 className="typography-body">body</h1>
 
