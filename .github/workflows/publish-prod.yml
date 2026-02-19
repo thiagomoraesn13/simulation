@@ -1,0 +1,61 @@
+name: Publish PROD
+
+on:
+  push:
+    branches: [master]
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: publish-prod
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    # remova se você não criou Environment "prod"
+    # environment: prod
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com
+
+      - name: Configure npm auth for GitHub Packages
+        run: |
+          echo "@thiagomoraesn13:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.WEB_LIB_PAT }}
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.WEB_LIB_PAT }}
+
+      - name: Set version (prod prerelease)
+        shell: bash
+        run: |
+          BASE=$(node -p "require('./package.json').version")
+          NEW="${BASE}-prod.${GITHUB_RUN_NUMBER}"
+          node -e "const fs=require('fs'); const p=require('./package.json'); p.version='${NEW}'; fs.writeFileSync('package.json', JSON.stringify(p,null,2)+'\n');"
+          echo "Publishing version: ${NEW}"
+
+      - name: Build (fixed env)
+        run: yarn build
+        env:
+          VITE_ACCOUNTS_API_URL: https://foundation.uat.api.dotz.com.br/foundation-bff-web-public-api
+          VITE_API_CLIENT_ID: NOVERDEWEB
+          VITE_API_CLIENT_SECRET: URYPUTCHALKATEP
+          VITE_TOPAZ_DEVICE_CLIENT: https://dotz-hmg.dnofd.com/ofdb/OFDB.js
+          VITE_PLATFORM_HEADER: web
+
+      - name: Publish to GitHub Packages (latest)
+        run: npm publish --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.WEB_LIB_PAT }}
