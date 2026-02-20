@@ -43,7 +43,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.WEB_LIB_PAT }}
 
       - name: Build
-        run: yarn build --mode uat
+        run: yarn build:uat
 
       - name: Publish to GitHub Packages (latest)
         run: npm publish --tag latest

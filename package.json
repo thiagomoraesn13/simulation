@@ -22,6 +22,8 @@
     "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
     "build:types": "tsc -p tsconfig.build.json",
     "build": "vite build && yarn build:css && yarn build:types",
+    "build:uat": "vite build --mode uat && yarn build:css && yarn build:types",
+    "build:prod": "vite build --mode prod && yarn build:css && yarn build:types",
     "prepublishOnly": "yarn build",
     "publish:pkg": "npm publish"
   },
