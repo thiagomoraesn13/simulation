@@ -1,6 +1,6 @@
 {
   "name": "@thiagomoraesn13/simulation",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "private": false,
   "type": "module",
   "main": "dist/index.js",
@@ -22,9 +22,9 @@
     "build:css": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --minify",
     "build:types": "tsc -p tsconfig.build.json",
     "build": "vite build && yarn build:css && yarn build:types",
-    "build:uat": "vite build --mode uat && yarn build:css && yarn build:types",
-    "build:prod": "vite build --mode prod && yarn build:css && yarn build:types",
-    "prepublishOnly": "yarn build",
+    "build:uat": "vite build --mode development && yarn build:css && yarn build:types",
+    "build:prod": "vite build --mode production && yarn build:css && yarn build:types",
+    "prepublishOnly": "yarn build:uat",
     "publish:pkg": "npm publish"
   },
   "peerDependencies": {
