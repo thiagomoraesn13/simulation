@@ -6,6 +6,8 @@ export function Page1() {
   const { goToOnboarding, assetsBaseUrl, theme } = useSimulation();
   const logoUrl = `${assetsBaseUrl}/${theme}/logo.png`;
 
+  console.log(import.meta.env);
+
   return (
     <div className="p-6 space-y-4">
       <h2 className="text-xl font-bold">Simulation • Página 1</h2>

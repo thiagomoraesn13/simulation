@@ -15,8 +15,6 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    # remova se você não criou Environment "prod"
-    # environment: prod
 
     steps:
       - uses: actions/checkout@v4
@@ -37,14 +35,6 @@ jobs:
         run: yarn install --frozen-lockfile
         env:
           NODE_AUTH_TOKEN: ${{ secrets.WEB_LIB_PAT }}
-
-      - name: Set version (prod prerelease)
-        shell: bash
-        run: |
-          BASE=$(node -p "require('./package.json').version")
-          NEW="${BASE}-prod.${GITHUB_RUN_NUMBER}"
-          node -e "const fs=require('fs'); const p=require('./package.json'); p.version='${NEW}'; fs.writeFileSync('package.json', JSON.stringify(p,null,2)+'\n');"
-          echo "Publishing version: ${NEW}"
 
       - name: Build (fixed env)
         run: yarn build
