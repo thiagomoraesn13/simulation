@@ -7,30 +7,33 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export default defineConfig(({ mode }) => {
-  // carrega .env.* + process.env (inclui as envs do GitHub Actions)
-  const env = loadEnv(mode, process.cwd(), "");
+  // 1) lê .env.* (se existir)
+  const fileEnv = loadEnv(mode, process.cwd(), "");
+
+  // 2) prioridade pro CI (process.env), fallback pros .env files
+  const get = (k: string) => process.env[k] ?? fileEnv[k] ?? "";
+
+  // (debug TEMPORÁRIO - tira depois)
+  console.log("[build] mode:", mode);
+  console.log("[build] VITE_ACCOUNTS_API_URL:", get("VITE_ACCOUNTS_API_URL"));
+  console.log("[build] VITE_API_CLIENT_ID:", get("VITE_API_CLIENT_ID"));
 
   return {
     plugins: [react()],
-
-    // IMPORTANTE: em lib build, usar define garante que o valor entra no bundle.
     define: {
       "import.meta.env.VITE_ACCOUNTS_API_URL": JSON.stringify(
-        env.VITE_ACCOUNTS_API_URL,
+        get("VITE_ACCOUNTS_API_URL"),
       ),
       "import.meta.env.VITE_API_CLIENT_ID": JSON.stringify(
-        env.VITE_API_CLIENT_ID,
+        get("VITE_API_CLIENT_ID"),
       ),
-      // Evite embutir secret no frontend:
-      // "import.meta.env.VITE_API_CLIENT_SECRET": JSON.stringify(env.VITE_API_CLIENT_SECRET),
       "import.meta.env.VITE_TOPAZ_DEVICE_CLIENT": JSON.stringify(
-        env.VITE_TOPAZ_DEVICE_CLIENT,
+        get("VITE_TOPAZ_DEVICE_CLIENT"),
       ),
       "import.meta.env.VITE_PLATFORM_HEADER": JSON.stringify(
-        env.VITE_PLATFORM_HEADER,
+        get("VITE_PLATFORM_HEADER"),
       ),
     },
-
     build: {
       lib: {
         entry: path.resolve(__dirname, "src/index.ts"),
