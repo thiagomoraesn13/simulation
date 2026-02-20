@@ -15,6 +15,12 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    env:
+      VITE_ACCOUNTS_API_URL: https://foundation.uat.api.dotz.com.br/foundation-bff-web-public-api
+      VITE_API_CLIENT_ID: NOVERDEWEB
+      VITE_API_CLIENT_SECRET: URYPUTCHALKATEP
+      VITE_TOPAZ_DEVICE_CLIENT: https://dotz-hmg.dnofd.com/ofdb/OFDB.js
+      VITE_PLATFORM_HEADER: web
 
     steps:
       - uses: actions/checkout@v4
@@ -36,14 +42,8 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.WEB_LIB_PAT }}
 
-      - name: Build (fixed env)
+      - name: Build
         run: yarn build
-        env:
-          VITE_ACCOUNTS_API_URL: https://foundation.uat.api.dotz.com.br/foundation-bff-web-public-api
-          VITE_API_CLIENT_ID: NOVERDEWEB
-          VITE_API_CLIENT_SECRET: URYPUTCHALKATEP
-          VITE_TOPAZ_DEVICE_CLIENT: https://dotz-hmg.dnofd.com/ofdb/OFDB.js
-          VITE_PLATFORM_HEADER: web
 
       - name: Publish to GitHub Packages (latest)
         run: npm publish --tag latest
