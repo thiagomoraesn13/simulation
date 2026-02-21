@@ -1,6 +1,7 @@
 import { GenericButton } from "@thiagomoraesn13/ui";
 import { useSimulation } from "../simulation-context";
 import { SectionTitle } from "../SectionTitle";
+import { getAccountsConfig } from "../config";
 
 export const CI_ENV_CHECK = {
   url: import.meta.env.VITE_ACCOUNTS_API_URL,
@@ -14,6 +15,10 @@ export function Page1() {
   console.log(import.meta.env);
 
   console.log("CI_ENV_CHECK", CI_ENV_CHECK);
+
+  const { accountsApiUrl } = getAccountsConfig();
+
+  console.log({ accountsApiUrl });
 
   return (
     <div className="p-6 space-y-4">
